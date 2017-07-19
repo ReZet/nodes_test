@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Test for Frontend Developer</title>
+		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./css/font-awesome.min.css" />
+	</head>
+	<body>
+		<div class="container" id="wrapper"></div>
+		<script type="text/template" id="item-note">
+			<td><%- mess %></td><td class="text-center"><button class="btn btn-info edit" href="#"><i class="fa fa-edit fa-fw"></i></button><button class="btn remove btn-danger" href="#"><i class="fa fa-remove fa-fw"></i></button></td>
+		</script>
+		<script type="text/template" id="no-notes">
+			<td colspan="2">Notes are not found!</td>		
+		</script>
+		<script type="text/template" id="table">
+			<div class="d-flex justify-content-end">
+				<div class="mr-auto input-group">
+					<button class="add btn btn-info" href="#"><i class="fa fa-plus fa-fw"></i></button>
+				</div>
+				<div class="input-group">
+					<input type="text" name="tag" class="searchable_tag form-control" value="<%- filterTag %>" />
+					<span class="input-group-btn">
+						<button class="btn btn-secondary search_tag" type="button"><i class="fa fa-search"></i></button>
+					</span>
+					<% if (filterTag) { %>
+						<span class="input-group-btn">
+							<button class="btn btn-secondary clear_search_tag" type="button"><i class="fa fa-remove"></i></button>
+						</span>
+					<% } %>
+				</div>
+			</div>
+			<hr />
+			<table class="table table-hover table-striped">
+				<tbody></tbody>
+			</table>
+		</script>
+		<script type="text/template" id="edit-note">
+			<% if (mess) { %>
+				<h1>Edit note</h1>
+			<% } else { %>
+				<h1>Add new note</h1>
+			<% } %>
+			<hr />
+			<form class="form-horizontal">
+				<div class="form-group">
+					<textarea name="mess" class="form-control" id="inputText" placeholder="Text" required ><%- mess %></textarea>
+				</div>
+				<ul></ul>
+				<% if (tags.length) { %>
+					<ul></ul>
+				<% } %>	
+				
+				<div class="form-group text-center">
+					<button class="btn btn-info" type="submit"><i class="fa fa-save fa-fw"></i>Save</button>
+					<button class="btn btn-danger cancel" type="button"><i class="fa fa-remove fa-fw"></i>Cancel</button>
+				</div>
+			</form>
+		</script>
+		<script type="text/template" id="item-tag">
+			#<%- text %>
+		</script>
+
+		<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+		<script type="text/javascript" src="js/vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="js/vendor/backbone-min.js"></script>
+		<script type="text/javascript" src="js/vendor/backbone.localStorage.min.js"></script>
+		<script type="text/javascript" src="js/vendor/backbone.radio.min.js"></script>
+		<script type="text/javascript" src="js/vendor/backbone.marionette.min.js"></script>
+
+		<script type="text/javascript" src="js/models/note.js"></script>
+		<script type="text/javascript" src="js/models/tag.js"></script>
+		<script type="text/javascript" src="js/collections/notes.js"></script>
+		<!-- <script type="text/javascript" src="js/collections/tags.js"></script> -->
+
+		<script type="text/javascript" src="js/views/empty-view.js"></script>		
+		<script type="text/javascript" src="js/views/notes-table-view.js"></script>
+		<script type="text/javascript" src="js/views/note-item-view.js"></script>
+		<script type="text/javascript" src="js/views/notes-view.js"></script>
+		<script type="text/javascript" src="js/views/tag-edit-view.js"></script>
+		<script type="text/javascript" src="js/views/tags-view.js"></script>
+		<script type="text/javascript" src="js/views/note-edit-view.js"></script>
+		<script type="text/javascript" src="js/routers/router.js"></script>
+
+		<script type="text/javascript" src="js/app.js"></script>
+	</body>
+</html>
